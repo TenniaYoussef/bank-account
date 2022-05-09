@@ -21,21 +21,17 @@ class BankAccountTest {
     }
 
     @Test
-    void deposit_with_negative_amount_throw_amount_exception() {
-        Assertions.assertThrows(AmountException.class, () -> {
-            bankAccount.deposit(-50);
-        });
+    void depositWithNegativeAmountThrowAmountException() {
+        Assertions.assertThrows(AmountException.class, () -> bankAccount.deposit(-50));
     }
 
     @Test
-    void deposit_with_amount_zero_throw_amount_exception() {
-        Assertions.assertThrows(AmountException.class, () -> {
-            bankAccount.deposit(0);
-        });
+    void depositWithAmountZeroThrowAmountException() {
+        Assertions.assertThrows(AmountException.class, () -> bankAccount.deposit(0));
     }
 
     @Test
-    void deposit_with_positive_amount() {
+    void depositWithPositiveAmount() {
         double depositAmount = 1000;
         double initialBalance = bankAccount.getBalance();
         bankAccount.deposit(depositAmount);
@@ -43,27 +39,23 @@ class BankAccountTest {
     }
 
     @Test
-    void withdraw_with_negative_amount_throw_amount_exception() {
-        Assertions.assertThrows(AmountException.class, () -> {
-            bankAccount.withdraw(-50);
-        });
+    void withdrawWithNegativeAmountThrowAmountException() {
+        Assertions.assertThrows(AmountException.class, () -> bankAccount.withdraw(-50));
     }
 
     @Test
-    void withdraw_with_amount_zero_throw_amount_exception() {
-        Assertions.assertThrows(AmountException.class, () -> {
-            bankAccount.withdraw(0);
-        });
+    void withdrawWithAmountZeroThrowAmountException() {
+        Assertions.assertThrows(AmountException.class, () -> bankAccount.withdraw(0));
     }
 
     @Test
-    void withdraw_with_amount_bigger_than_balance_return_log_inf() {
+    void withdrawWithAmountBiggerThanBalanceReturnLogInf() {
         bankAccount.withdraw(1500);
         assertThat(Logger.getLogger(bankAccount.getClass().getName())).isNotNull();
     }
 
     @Test
-    void withdraw_with_amount_less_or_equal_to_balance() {
+    void withdrawWithAmountLessOrEqualToBalance() {
         double withdrawAmount = 1000;
         double initialBalance = bankAccount.getBalance();
         bankAccount.withdraw(withdrawAmount);
@@ -71,19 +63,19 @@ class BankAccountTest {
     }
 
     @Test
-    void history_contains_deposit_record() {
+    void historyContainsDepositRecord() {
         bankAccount.deposit(1000);
         assertThat(bankAccount.getHistory().getHistory().size()).isEqualTo(1);
     }
 
     @Test
-    void history_contains_withdraw_record() {
+    void historyContainsWithdrawRecord() {
         bankAccount.withdraw(1000);
         assertThat(bankAccount.getHistory().getHistory().size()).isEqualTo(1);
     }
 
     @Test
-    void givenSystemOutRedirection_whenInvokePrintln_thenOutputCaptorSuccess() {
+    void givenSystemOutRedirectionWhenInvokePrintlnThenOutputCaptorSuccess() {
         ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStreamCaptor));
 

@@ -1,14 +1,15 @@
 package com.bank.account.kata.operation;
 
 import com.bank.account.kata.utils.Fields;
+import lombok.Getter;
 
 import java.util.Date;
 
 public class Operation {
 
-    private final OperationType operationType;
-    private final Date operationDate;
-    private final double amount;
+    @Getter private final OperationType operationType;
+    @Getter private final Date operationDate;
+    @Getter private final double amount;
 
     public Operation(OperationType operationType, Date operationDate, double amount) {
         Fields.notNull(operationType, "OperationType should not be null.");
@@ -17,20 +18,6 @@ public class Operation {
         this.operationDate = new Date(operationDate.getTime());
         this.amount = amount;
     }
-
-    public OperationType getOperationType() {
-        return operationType;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public Date getOperationDate() {
-        return operationDate;
-    }
-
-
 
     @Override
     public String toString() {

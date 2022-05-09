@@ -5,10 +5,11 @@ import com.bank.account.kata.history.Statement;
 import com.bank.account.kata.operation.Operation;
 import com.bank.account.kata.operation.OperationType;
 import com.bank.account.kata.utils.Fields;
+import lombok.extern.java.Log;
 
 import java.util.Date;
-import java.util.logging.Logger;
 
+@Log
 public class BankAccount {
 
     private double balance;
@@ -33,7 +34,7 @@ public class BankAccount {
     public double withdraw(double withdrawAmount) {
         Fields.strictPositive(withdrawAmount);
         if(withdrawAmount > balance) {
-            Logger.getLogger(this.getClass().getName()).warning(String.format("Withdraw operation could not be processed : amount %s is greater than current balance %s",
+            log.warning(String.format("Withdraw operation could not be processed : amount %s is greater than current balance %s",
                     withdrawAmount,
                     balance));
         } else {
