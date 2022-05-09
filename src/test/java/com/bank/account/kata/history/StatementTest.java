@@ -7,7 +7,7 @@ class StatementTest {
 
 
     @Test
-    void when_operation_is_null_then_should_throw_exception() {
+    void whenOperationIsNullThenShouldThrowException() {
         Assertions.assertThrows(NullPointerException.class,
                 () -> new Statement(null, 0));
     }

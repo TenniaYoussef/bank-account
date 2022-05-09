@@ -19,7 +19,7 @@ class BAccountHistoryTest {
     }
 
     @Test
-    public void when_adding_new_statement_it_should_exist_in_history() {
+    public void whenAddingNewStatementItShouldExistInHistory() {
         Operation operation = new Operation(OperationType.DEPOSIT, new Date(), 100);
         Statement statement = new Statement(operation, 1100);
 
